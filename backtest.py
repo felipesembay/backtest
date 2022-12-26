@@ -20,20 +20,20 @@ if st.button('Get Data'):
     data = vbt.YFData.download(ticker, periodo, interval=interval).get()
     st.write('Data downloaded!')
     st.write(data)
+    prices = data['Close']
+    volume = data['Volume']
 
-prices = data['Close']
-volume = data['Volume']
+
+
 Indicators = st.selectbox('Indicadores', ['MACD', 'RSI', 'Stochastic', 'MA'])
 mr = st.slider('Media Rapida', 0, 200, 50)
 ml = st.slider('Media Lenta', 0, 200, 50)
 
-media_rapida = vbt.Indicators.run(princes, mr)
-media_lenta = vbt.Indicators.run(princes, ml)
+media_rapida = vbt.Indicators.run(prices, mr)
+media_lenta = vbt.Indicators.run(prices, ml)
 
 lower = Indicators.lower()
-entrada = media_rapida.{lower}_above(media_lenta)
-saida = media_rapida.{lower}_below(media_lenta)
+#entrada = media_rapida.{lower}_above(media_lenta)
+#saida = media_rapida.{lower}_below(media_lenta)
 
-pf_macd = vbt.Portfolio.from_signals(prices, entradas_macd, saidas_macd)
-
-pf_macd = vbt.Portfolio.from_signals(prices, entradas_macd, saidas_macd)
+#pf_macd = vbt.Portfolio.from_signals(prices, entrada, saida)
